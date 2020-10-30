@@ -18,7 +18,7 @@ import java.util.Optional;
 public class CategoriaController {
 
     @Autowired
-    CategoriaRepository categoriaRepository;
+    private CategoriaRepository categoriaRepository;
 
     @GetMapping
     public List<Categoria> listar(){
