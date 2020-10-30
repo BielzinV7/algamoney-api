@@ -3,6 +3,7 @@ package br.com.gabriel.algamoneyapi.controller;
 import br.com.gabriel.algamoneyapi.model.Pessoa;
 import br.com.gabriel.algamoneyapi.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -36,6 +37,13 @@ public class PessoaController{
 
         return pessoaOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 
-
     }
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletar(@PathVariable Long codigo){
+
+        pessoaRepository.deleteById(codigo);
+    }
+
 }
