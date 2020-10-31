@@ -59,7 +59,7 @@ public class PessoaController{
     }
 
     @PutMapping("/{codigo}/ativo")
-    public void atualizarPropiedadeAtivo(@PathVariable Long codigo,@RequestBody Boolean ativo){
+    public void atualizarPropiedadeAtivo(@Valid @PathVariable Long codigo,@RequestBody Boolean ativo){
 
         pessoaService.atualizarPropriedadeAtivo(codigo,ativo);
 
