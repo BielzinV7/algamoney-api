@@ -19,7 +19,7 @@ import java.util.Optional;
 public class LancamentoController{
 
     @Autowired
-    LancamentoRepository lancamentoRepository;
+    private LancamentoRepository lancamentoRepository;
 
     @GetMapping
     public List<Lancamento> listar(){
