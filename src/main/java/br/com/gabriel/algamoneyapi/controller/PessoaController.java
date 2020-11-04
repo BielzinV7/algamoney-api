@@ -58,6 +58,7 @@ public class PessoaController{
         return ResponseEntity.ok(pessoaSalva);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{codigo}/ativo")
     public void atualizarPropiedadeAtivo(@Valid @PathVariable Long codigo,@RequestBody Boolean ativo){
 

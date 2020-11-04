@@ -1,5 +1,7 @@
 package br.com.gabriel.algamoneyapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -52,6 +54,14 @@ public class Pessoa {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    @JsonIgnore
+    @Transient
+    public boolean isInativa(){
+
+        return !this.ativo;
+
     }
 
     @Override
