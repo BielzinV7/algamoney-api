@@ -24,7 +24,7 @@ public class LancamentoService {
 
         Optional<Pessoa> pessoaOpt = pessoaRepository.findById(lancamento.getPessoa().getCodigo());
 
-        if(!pessoaOpt.isPresent() || pessoaOpt.get().isInativa()){
+        if(!pessoaOpt.isPresent() || pessoaOpt.get().Inativa()){
 
             throw new PessoaInexistenteOuInativaException();
 
