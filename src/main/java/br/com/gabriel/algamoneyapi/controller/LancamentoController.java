@@ -3,11 +3,15 @@ package br.com.gabriel.algamoneyapi.controller;
 import br.com.gabriel.algamoneyapi.exceptionhandler.AlgamoneyExceptionHandler;
 import br.com.gabriel.algamoneyapi.model.Lancamento;
 import br.com.gabriel.algamoneyapi.repository.LancamentoRepository;
+import br.com.gabriel.algamoneyapi.repository.filter.LancamentoFilter;
 import br.com.gabriel.algamoneyapi.service.LancamentoService;
 import br.com.gabriel.algamoneyapi.service.exception.PessoaInexistenteOuInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,9 +40,9 @@ public class LancamentoController{
     LancamentoService lancamentoService;
 
     @GetMapping
-    public List<Lancamento> pesquisar(){
+    public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable){
 
-        return lancamentoRepository.findAll();
+        return lancamentoRepository.filtrar(lancamentoFilter, pageable);
 
     }
 
